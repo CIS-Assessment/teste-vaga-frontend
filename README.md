@@ -1,3 +1,14 @@
+# Passo a passo:
+ [ x ] Criar o fork
+ [ x ] Iniciar o projeto em next e adicionar dependências
+ [ ] Criar Layout da aplicação geral
+ [ ] Criar tela de listagem das tasks
+ [ ] Ajustar Css da tela de listagem
+ [ ] Criar tela dinâmica de cadastro/edição da task
+ [ ] Ajustar Css da tela de listagem dinâmica
+ 
+ [ ] Deploy no vercel
+
 # Teste prático para Frontend Javascript Developer
 
 ## Instruções
