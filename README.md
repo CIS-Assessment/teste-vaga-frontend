@@ -1,10 +1,16 @@
 # Passo a passo:
- [ x ] Criar o fork
+ [ x ] Criar o 
+ 
  [ x ] Iniciar o projeto em next e adicionar dependências
- [ ] Criar Layout da aplicação geral
+
+ [ x ] Criar Layout da aplicação geral
+
  [ ] Criar tela de listagem das tasks
+
  [ ] Ajustar Css da tela de listagem
- [ ] Criar tela dinâmica de cadastro/edição da task
+
+ [ ] Criar tela dinâmica de cadastro/edição da 
+ 
  [ ] Ajustar Css da tela de listagem dinâmica
  
  [ ] Deploy no vercel

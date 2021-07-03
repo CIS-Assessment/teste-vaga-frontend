@@ -1,0 +1,40 @@
+.layoutHeader {
+  background: #91c9c7;
+  color: #fff;
+  height: 90px;
+  box-shadow: 0px 5px 10px #02020273;
+  display: flex;
+  align-items: center;
+
+  .headerContainer {
+    display: flex;
+    align-items: center;
+
+    .headerRightSide {
+      margin-left: auto;
+      display: flex;
+      .rightSideLink {
+        color: #495655;
+        margin: 10px;
+      }
+    }
+  }
+}
+
+.layoutBody {
+  margin-top: 30px;
+}
+
+.layoutFooter {
+  // background-color: #204363;
+  bottom: 0;
+  position: absolute;
+  width: 100vw;
+  left: 0;
+  // color: #fff;
+  height: 4vh;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  font-size: 12px;
+}
