@@ -1,5 +1,8 @@
+import { useState } from "react";
+import Link from "next/link";
 import {
   Typography,
+  Icon,
   Divider,
   Grid,
   Button,
@@ -14,9 +17,21 @@ import {
 
 import style from "../../styles/tasks.module.scss";
 import Layout from "../../components/Layout";
-import { Icon } from "@material-ui/core";
 
 const Tasks = () => {
+  const [tasks, setTasks] = useState([
+    {
+      title: "Conferir Crud",
+      description: "Conferir se está tudo certo e não esqueci nada",
+      deadline: "03/07/2021",
+      completed: false,
+    },
+  ]);
+
+  const handleChangePage = () => {
+    console.log("handleChangePage");
+  };
+
   return (
     <Layout>
       <Typography variant="h4" className={style.headerTitle}>
@@ -28,28 +43,28 @@ const Tasks = () => {
         <Button className={style.btn} startIcon={<Icon>filter_list</Icon>}>
           FILTRAR
         </Button>
-        <Button startIcon={<Icon color="action">add_circle</Icon>}>ADICIONAR</Button>
+        <Link href="/tasks/new">
+          <Button startIcon={<Icon color="action">add_circle</Icon>}>ADICIONAR</Button>
+        </Link>
       </Grid>
       <Grid>
         <TableContainer>
           <Table aria-label="a dense table">
             <TableHead>
               <TableRow>
-                <TableCell>Dessert (100g serving)</TableCell>
-                <TableCell align="right">Calories</TableCell>
-                <TableCell align="right">Fat&nbsp;(g)</TableCell>
-                <TableCell align="right">Carbs&nbsp;(g)</TableCell>
-                <TableCell align="right">Protein&nbsp;(g)</TableCell>
+                <TableCell>Título</TableCell>
+                <TableCell align="right">Prazo de entrega</TableCell>
+                <TableCell align="right">Tarefa conlcuída</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
-              <TableRow key={"oi"}>
-                <TableCell component="th">{"oi"}</TableCell>
-                <TableCell align="right">{"oi"}</TableCell>
-                <TableCell align="right">{"oi"}</TableCell>
-                <TableCell align="right">{"oi"}</TableCell>
-                <TableCell align="right">{"oi"}</TableCell>
-              </TableRow>
+              {tasks.map((row, i) => (
+                <TableRow key={i}>
+                  <TableCell component="th">{row.title}</TableCell>
+                  <TableCell align="right">{row.deadline}</TableCell>
+                  <TableCell align="right">{row.completed ? "Sim" : "Não"}</TableCell>
+                </TableRow>
+              ))}
             </TableBody>
           </Table>
           <TablePagination
@@ -58,7 +73,7 @@ const Tasks = () => {
             count={10}
             rowsPerPage={10}
             page={0}
-            // onChangePage={handleChangePage}
+            onChangePage={handleChangePage}
             // onChangeRowsPerPage={handleChangeRowsPerPage}
           />
         </TableContainer>

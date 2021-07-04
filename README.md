@@ -1,13 +1,18 @@
+# LEMBRAR:
+  - colocar o redux.
+  - configurar e formatar a data direito.
+  - colocar máscara pra campo de data.
+  - colocar paginação e ordenação da tabela.
+
+
 # Passo a passo:
- [ x ] Criar o 
- 
  [ x ] Iniciar o projeto em next e adicionar dependências
 
  [ x ] Criar Layout da aplicação geral
 
- [ ] Criar tela de listagem das tasks
+ [ x ] Criar tela de listagem das tasks
 
- [ ] Ajustar Css da tela de listagem
+ [ x ] Ajustar Css da tela de listagem
 
  [ ] Criar tela dinâmica de cadastro/edição da 
  
