@@ -1,8 +1,8 @@
 # LEMBRAR:
-  - colocar o redux.
   - configurar e formatar a data direito.
   - colocar máscara pra campo de data.
   - colocar paginação e ordenação da tabela.
+  - colocar as cores no css geral.
 
 
 # Passo a passo:
@@ -14,9 +14,15 @@
 
  [ x ] Ajustar Css da tela de listagem
 
- [ ] Criar tela dinâmica de cadastro/edição da 
+ [ x ] Criar tela dinâmica de cadastro/edição das tasks
  
- [ ] Ajustar Css da tela de listagem dinâmica
+ [ x ] Ajustar Css da tela de listagem dinâmica
+
+ [ ] Implementar o redux pra puxar os dados de uma tela pra outra
+
+ [ ] Ajustar a lógica de telas (pra pegar o id)
+
+ [ ] Colocar mensagens de alerta.
  
  [ ] Deploy no vercel
 
