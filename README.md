@@ -18,7 +18,7 @@
  
  [ x ] Ajustar Css da tela de listagem dinâmica
 
- [ ] Implementar o redux pra puxar os dados de uma tela pra outra
+ [ x ] Implementar o redux pra puxar os dados de uma tela pra outra
 
  [ ] Ajustar a lógica de telas (pra pegar o id)
 

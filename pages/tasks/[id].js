@@ -1,20 +1,27 @@
 import { useFormik } from "formik";
+import { useDispatch } from "react-redux";
 import { Container, TextField, Button, Typography, Divider } from "@material-ui/core";
 
-import Layout from "../../components/Layout";
+import { task } from "../../redux";
 import style from "../../styles/formTasks.module.scss";
 
+import Layout from "../../components/Layout";
+
 const FormTasks = () => {
+  const dispatch = useDispatch();
+
+  const onSubmit = (values) => {
+    dispatch(task.actions.setTask(values));
+  };
   const formik = useFormik({
     initialValues: {
       title: "",
       description: "",
       deadline: "",
     },
-    onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2));
-    },
+    onSubmit,
   });
+  
   return (
     <Layout>
       <Typography variant="h4" className={style.headerTitle}>
@@ -52,7 +59,9 @@ const FormTasks = () => {
               shrink: true,
             }}
           />
-          <Button type="submit" className={style.btnSubmit}>Salvar</Button>
+          <Button type="submit" className={style.btnSubmit}>
+            Salvar
+          </Button>
         </form>
       </Container>
     </Layout>

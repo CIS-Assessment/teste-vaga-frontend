@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import Link from "next/link";
 import {
   Typography,
@@ -19,14 +20,12 @@ import style from "../../styles/tasks.module.scss";
 import Layout from "../../components/Layout";
 
 const Tasks = () => {
-  const [tasks, setTasks] = useState([
-    {
-      title: "Conferir Crud",
-      description: "Conferir se está tudo certo e não esqueci nada",
-      deadline: "03/07/2021",
-      completed: false,
-    },
-  ]);
+  const [tasks, setTasks] = useState([]);
+  const tasksReducer = useSelector((state) => state.task.tasks);
+
+  useEffect(() => {
+    setTasks(tasksReducer);
+  }, []);
 
   const handleChangePage = () => {
     console.log("handleChangePage");
