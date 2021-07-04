@@ -7,13 +7,8 @@ import {
   Divider,
   Grid,
   Button,
-  TableContainer,
-  Table,
-  TableHead,
-  TableBody,
-  TableRow,
-  TableCell,
-  TablePagination,
+  Checkbox,
+  IconButton,
 } from "@material-ui/core";
 
 import style from "../../styles/tasks.module.scss";
@@ -26,10 +21,6 @@ const Tasks = () => {
   useEffect(() => {
     setTasks(tasksReducer);
   }, []);
-
-  const handleChangePage = () => {
-    console.log("handleChangePage");
-  };
 
   return (
     <Layout>
@@ -46,36 +37,33 @@ const Tasks = () => {
           <Button startIcon={<Icon color="action">add_circle</Icon>}>ADICIONAR</Button>
         </Link>
       </Grid>
-      <Grid>
-        <TableContainer>
-          <Table aria-label="a dense table">
-            <TableHead>
-              <TableRow>
-                <TableCell>Título</TableCell>
-                <TableCell align="right">Prazo de entrega</TableCell>
-                <TableCell align="right">Tarefa conlcuída</TableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {tasks.map((row, i) => (
-                <TableRow key={i}>
-                  <TableCell component="th">{row.title}</TableCell>
-                  <TableCell align="right">{row.deadline}</TableCell>
-                  <TableCell align="right">{row.completed ? "Sim" : "Não"}</TableCell>
-                </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-          <TablePagination
-            rowsPerPageOptions={[5, 10, 25]}
-            component="div"
-            count={10}
-            rowsPerPage={10}
-            page={0}
-            onChangePage={handleChangePage}
-            // onChangeRowsPerPage={handleChangeRowsPerPage}
-          />
-        </TableContainer>
+      <Grid container className={style.gridTasks}>
+        <Grid item xs={6}>
+          Título
+        </Grid>
+        <Grid item xs={6}>
+          Prazo
+        </Grid>
+        <Grid item xs={12}>
+          <Divider />
+        </Grid>
+
+        {tasks.map((row, i) => (
+          <Grid container key={i}>
+            <Grid item xs={6}>
+              <Checkbox />
+              {row.title}
+            </Grid>
+            <Grid item xs={6}>
+              {row.deadline}
+              <Link href={`/tasks/${row.id}`}>
+                <IconButton>
+                  <Icon>edit</Icon>
+                </IconButton>
+              </Link>
+            </Grid>
+          </Grid>
+        ))}
       </Grid>
     </Layout>
   );

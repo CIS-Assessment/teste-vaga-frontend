@@ -1,15 +1,4 @@
-import {
-  take,
-  all,
-  put,
-  delay,
-  fork,
-  cancel,
-  call,
-  takeLatest,
-} from 'redux-saga/effects';
-
-import * as actions from './actions';
+import { all } from "redux-saga/effects";
 
 function* rootSaga() {
   yield all([]);

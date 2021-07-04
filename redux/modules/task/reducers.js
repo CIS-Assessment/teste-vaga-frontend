@@ -16,5 +16,13 @@ export const reducer = produce((state, action) => {
         deadline: action.payload.deadline,
       });
       break;
+    case actions.UPDATETASK:
+      state.tasks = state.tasks.map((r) => {
+        if (r.id === action.payload.id) {
+          return action.payload;
+        }
+        return r;
+      });
+      break;
   }
 }, initialState);
