@@ -4,9 +4,9 @@ export const CREATE = `${MODULE_NAME}/CREATE`;
 export const UPDATE = `${MODULE_NAME}/UPDATE`;
 export const DELETE = `${MODULE_NAME}/DELETE`;
 
-export const create = ({ title, description, deadline }) => ({
+export const create = ({ id, title, description, deadline }) => ({
   type: CREATE,
-  payload: { title, description, deadline },
+  payload: { id, title, description, deadline },
 });
 
 export const update = (task) => ({

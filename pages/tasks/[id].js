@@ -20,10 +20,15 @@ const FormTasks = () => {
       dispatch(task.actions.update(values));
       return;
     }
+    const uuid = () => Math.random().toString(36).substr(2, 9);
+    values.id = uuid();
     dispatch(task.actions.create(values));
+    formik.setFieldValue("id", values.id);
   };
+
   const formik = useFormik({
     initialValues: {
+      id: "",
       title: "",
       description: "",
       deadline: "",
