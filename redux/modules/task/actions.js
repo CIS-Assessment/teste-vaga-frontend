@@ -1,15 +1,20 @@
 import MODULE_NAME from "./constants";
 
-export const SETTASK = `${MODULE_NAME}/SETTASK`;
+export const CREATE = `${MODULE_NAME}/CREATE`;
+export const UPDATE = `${MODULE_NAME}/UPDATE`;
+export const DELETE = `${MODULE_NAME}/DELETE`;
 
-export const UPDATETASK = `${MODULE_NAME}/UPDATETASK`;
-
-export const setTask = ({ title, description, deadline }) => ({
-  type: SETTASK,
+export const create = ({ title, description, deadline }) => ({
+  type: CREATE,
   payload: { title, description, deadline },
 });
 
-export const updateTask = (task) => ({
-  type: UPDATETASK,
+export const update = (task) => ({
+  type: UPDATE,
   payload: task,
+});
+
+export const remove = (id) => ({
+  type: DELETE,
+  payload: { id },
 });

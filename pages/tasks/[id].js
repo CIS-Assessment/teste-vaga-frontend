@@ -17,10 +17,10 @@ const FormTasks = () => {
 
   const onSubmit = (values) => {
     if (values.id) {
-      dispatch(task.actions.updateTask(values));
+      dispatch(task.actions.update(values));
       return;
     }
-    dispatch(task.actions.setTask(values));
+    dispatch(task.actions.create(values));
   };
   const formik = useFormik({
     initialValues: {

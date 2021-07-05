@@ -1,10 +1,13 @@
 # LEMBRAR:
 
-- configurar e formatar a data direito.
+- ajeitar bug
 - colocar máscara pra campo de data.
-- colocar paginação e ordenação da tabela.
-- colocar as cores no css geral.
+- ajustar o filtro.
+- css da tela de listagem.
 - ajeitar o menu.
+- Mobile first e layout responsivo.
+- colocar as cores no css geral.
+- Colocar mensagens de alerta.
 
 # bug detectado
 
@@ -26,11 +29,13 @@
 
 [ x ] Implementar o redux pra puxar os dados de uma tela pra outra
 
-[ ] Ajustar a lógica de telas (pra pegar o id)
+[ x ] Ajustar a lógica de telas (pra pegar o id)
 
 [ ] Colocar mensagens de alerta.
 
 [ ] Deploy no vercel
+
+
 
 # Teste prático para Frontend Javascript Developer
 
@@ -46,20 +51,20 @@ Você irá construir uma aplicação para gerenciamento de tarefas. É uma aplic
 
 Nossa ideia de interface é:
 
-- Tela principal com listagem das tasks.
-- Tela para cadastro/edição e exclusão da task com os campos:
-  - Título
-  - Descrição
-  - Prazo de entrega (dia/mês/ano)
-  - Tarefa conlcuída (sim/não)
+- ok Tela principal com listagem das tasks.
+- ok Tela para cadastro/edição e exclusão da task com os campos:
+  - ok Título
+  - ok Descrição
+  - ok Prazo de entrega (dia/mês/ano)
+  - ok Tarefa conlcuída (sim/não)
 
 ### O que nós esperamos do seu teste
 
-- Utilizar no desenvolvimento da aplicação o `Next.js`. Utilize o framework da melhor forma possível (metodologia/estrutura);
-- Utilização do estado local para salvar as tasks;
-- Um HTML escrito da maneira mais semântica possível (HTML5/5.1);
-- CSS3/4 - Com um pre processador de CSS (a escolha fica a seu critério, por aqui utilizamos SASS/SCSS);
-- Fique à vontade para utilizar Bootstrap, MaterialUi, Chakra UI, Tailwind CSS.
+- ok Utilizar no desenvolvimento da aplicação o `Next.js`. Utilize o framework da melhor forma possível (metodologia/estrutura);
+- ok Utilização do estado local para salvar as tasks;
+- ok Um HTML escrito da maneira mais semântica possível (HTML5/5.1);
+- ok CSS3/4 - Com um pre processador de CSS (a escolha fica a seu critério, por aqui utilizamos SASS/SCSS);
+- ok Fique à vontade para utilizar Bootstrap, MaterialUi, Chakra UI, Tailwind CSS.
 - Mobile first e layout responsivo.
 
 ### O que nos impressionaria

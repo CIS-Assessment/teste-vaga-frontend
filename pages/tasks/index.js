@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Link from "next/link";
 import {
   Typography,
@@ -11,16 +11,26 @@ import {
   IconButton,
 } from "@material-ui/core";
 
+import { task } from "../../redux";
 import style from "../../styles/tasks.module.scss";
 import Layout from "../../components/Layout";
 
 const Tasks = () => {
+  const dispatch = useDispatch();
   const [tasks, setTasks] = useState([]);
   const tasksReducer = useSelector((state) => state.task.tasks);
 
   useEffect(() => {
     setTasks(tasksReducer);
-  }, []);
+  }, [tasksReducer]);
+
+  const onDelete = (row) => {
+    dispatch(task.actions.remove(row.id));
+  };
+
+  const handleChange = (e, row) => {
+    dispatch(task.actions.update({ ...row, completed: e.target.checked }));
+  };
 
   return (
     <Layout>
@@ -51,7 +61,12 @@ const Tasks = () => {
         {tasks.map((row, i) => (
           <Grid container key={i}>
             <Grid item xs={6}>
-              <Checkbox />
+              <Checkbox
+                id={row.id}
+                checked={row.completed}
+                onChange={(e) => handleChange(e, row)}
+                inputProps={{ "aria-label": "checkbox" }}
+              />
               {row.title}
             </Grid>
             <Grid item xs={6}>
@@ -61,6 +76,9 @@ const Tasks = () => {
                   <Icon>edit</Icon>
                 </IconButton>
               </Link>
+              <IconButton onClick={() => onDelete(row)}>
+                <Icon>delete_outline</Icon>
+              </IconButton>
             </Grid>
           </Grid>
         ))}
