@@ -1,13 +1,23 @@
 import { useFormik } from "formik";
 import { useDispatch, useSelector } from "react-redux";
+import Link from "next/link";
 import { useRouter } from "next/router";
-import { Container, TextField, Button, Typography, Divider } from "@material-ui/core";
+import {
+  Container,
+  TextField,
+  Button,
+  Typography,
+  Divider,
+  Grid,
+} from "@material-ui/core";
 
 import { task } from "../../redux";
 import style from "../../styles/formTasks.module.scss";
 
 import Layout from "../../components/Layout";
 import { useEffect } from "react";
+import { IconButton } from "@material-ui/core";
+import { Icon } from "@material-ui/core";
 
 const FormTasks = () => {
   const router = useRouter();
@@ -48,9 +58,17 @@ const FormTasks = () => {
 
   return (
     <Layout>
-      <Typography variant="h4" className={style.headerTitle}>
-        {formik?.values?.title ? formik.values.title : "Nova tarefa"}
-      </Typography>
+      <Grid className={style.gridHeader}>
+        <Link href='/tasks'>
+          <IconButton>
+            <Icon>chevron_left</Icon>
+          </IconButton>
+        </Link>
+        <Typography variant="h4" className={style.headerTitle}>
+          {formik?.values?.title ? formik.values.title : "Nova tarefa"}
+        </Typography>
+      </Grid>
+
       <Divider />
       <Container className={style.containerBody}>
         <form className={style.form} onSubmit={formik.handleSubmit}>

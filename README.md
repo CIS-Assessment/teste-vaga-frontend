@@ -1,17 +1,11 @@
 # LEMBRAR:
-
-- ajeitar bug
-- colocar máscara pra campo de data.
-- ajustar o filtro.
-- css da tela de listagem.
-- ajeitar o menu.
-- Mobile first e layout responsivo.
-- colocar as cores no css geral.
+- colocar modal pra ver descrição.
 - Colocar mensagens de alerta.
+- ajustar o filtro.
+- Fazer um dashboard legal.
+
 
 # bug detectado
-
-- quando faço uma nova tarefa e clico várias vezes em salvar ele ta salvando varios em vez de editar.
 
 # Passo a passo:
 
@@ -34,8 +28,6 @@
 [ ] Colocar mensagens de alerta.
 
 [ ] Deploy no vercel
-
-
 
 # Teste prático para Frontend Javascript Developer
 

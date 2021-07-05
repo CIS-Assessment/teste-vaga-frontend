@@ -23,11 +23,6 @@ const Layout = ({ children }) => {
                 TAREFAS
               </Link>
             </Typography>
-            <Typography>
-              <Link href="/tasks" className={style.rightSideLink}>
-                SOBRE
-              </Link>
-            </Typography>
           </Grid>
         </Container>
       </Grid>

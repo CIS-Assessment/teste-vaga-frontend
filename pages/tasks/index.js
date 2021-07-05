@@ -9,9 +9,12 @@ import {
   Button,
   Checkbox,
   IconButton,
+  Container,
 } from "@material-ui/core";
 
 import { task } from "../../redux";
+import { toBr } from "../../utils/formatDate";
+
 import style from "../../styles/tasks.module.scss";
 import Layout from "../../components/Layout";
 
@@ -40,49 +43,47 @@ const Tasks = () => {
       <Divider />
 
       <Grid className={style.gridBtnTable}>
-        <Button className={style.btn} startIcon={<Icon>filter_list</Icon>}>
+        {/* <Button className={style.btn} startIcon={<Icon>filter_list</Icon>}>
           FILTRAR
-        </Button>
+        </Button> */}
         <Link href="/tasks/new">
           <Button startIcon={<Icon color="action">add_circle</Icon>}>ADICIONAR</Button>
         </Link>
       </Grid>
-      <Grid container className={style.gridTasks}>
-        <Grid item xs={6}>
-          Título
-        </Grid>
-        <Grid item xs={6}>
-          Prazo
-        </Grid>
-        <Grid item xs={12}>
-          <Divider />
-        </Grid>
-
-        {tasks.map((row, i) => (
-          <Grid container key={i}>
-            <Grid item xs={6}>
-              <Checkbox
-                id={row.id}
-                checked={row.completed}
-                onChange={(e) => handleChange(e, row)}
-                inputProps={{ "aria-label": "checkbox" }}
-              />
-              {row.title}
-            </Grid>
-            <Grid item xs={6}>
-              {row.deadline}
-              <Link href={`/tasks/${row.id}`}>
-                <IconButton>
-                  <Icon>edit</Icon>
-                </IconButton>
-              </Link>
-              <IconButton onClick={() => onDelete(row)}>
-                <Icon>delete_outline</Icon>
-              </IconButton>
-            </Grid>
-          </Grid>
-        ))}
+      <Container maxWidth="md" className={style.containerTasks}>
+        <Grid className={style.titleHeader}>Título</Grid>
+        <Grid className={`${style.titleHeader} ${style.titleHeaderRight}`}>Prazo</Grid>
+      </Container>
+      <Grid item xs={12}>
+        <Divider />
       </Grid>
+      {tasks.map((row, i) => (
+        <Container maxWidth="md" key={i} className={style.containerTasks}>
+          <Grid
+            className={style.gridRowTask}
+            style={row.completed ? { textDecoration: "line-through" } : {}}
+          >
+            <Checkbox
+              id={row.id}
+              checked={row.completed}
+              onChange={(e) => handleChange(e, row)}
+              inputProps={{ "aria-label": "checkbox" }}
+            />
+            {row.title}
+          </Grid>
+          <Grid className={style.gridRowTask}>
+            <Typography style={row.completed ? { textDecoration: "line-through" } : {}}>
+              {toBr(row.deadline)}
+            </Typography>
+            <Link href={`/tasks/${row.id}`}>
+              <Icon className={style.iconButton}>edit</Icon>
+            </Link>
+            <Icon onClick={() => onDelete(row)} className={style.iconButton}>
+              delete_outline
+            </Icon>
+          </Grid>
+        </Container>
+      ))}
     </Layout>
   );
 };
