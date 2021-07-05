@@ -8,8 +8,13 @@ import {
   Grid,
   Button,
   Checkbox,
-  IconButton,
+  Modal,
   Container,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogTitle,
+  DialogContentText,
 } from "@material-ui/core";
 
 import { task } from "../../redux";
@@ -21,6 +26,8 @@ import Layout from "../../components/Layout";
 const Tasks = () => {
   const dispatch = useDispatch();
   const [tasks, setTasks] = useState([]);
+  const [open, setOpen] = useState(false);
+  const [currTask, setCurrTask] = useState();
   const tasksReducer = useSelector((state) => state.task.tasks);
 
   useEffect(() => {
@@ -35,8 +42,47 @@ const Tasks = () => {
     dispatch(task.actions.update({ ...row, completed: e.target.checked }));
   };
 
+  const handleModal = (row) => {
+    setCurrTask(row);
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+    setCurrTask();
+  };
+
   return (
     <Layout>
+      <Dialog
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
+        <DialogTitle className={style.dialogTitle}>
+          <Icon className={style.iconDialog}>
+            {currTask?.completed ? "done_all" : "pending"}
+          </Icon>
+
+          {currTask?.title}
+        </DialogTitle>
+        <DialogContent>
+          <DialogContentText id="alert-dialog-description">
+            {currTask?.description}
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleClose} color="primary">
+            Sair
+          </Button>
+          <Link href={`/tasks/${currTask?.id}`}>
+            <Button onClick={handleClose} color="primary" autoFocus>
+              Editar
+            </Button>
+          </Link>
+        </DialogActions>
+      </Dialog>
       <Typography variant="h4" className={style.headerTitle}>
         TAREFAS
       </Typography>
@@ -68,8 +114,11 @@ const Tasks = () => {
               checked={row.completed}
               onChange={(e) => handleChange(e, row)}
               inputProps={{ "aria-label": "checkbox" }}
+              style={{ color: "#91C9C7" }}
             />
-            {row.title}
+            <Typography className={style.titleTask} onClick={() => handleModal(row)}>
+              {row.title}
+            </Typography>
           </Grid>
           <Grid className={style.gridRowTask}>
             <Typography style={row.completed ? { textDecoration: "line-through" } : {}}>

@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { useFormik } from "formik";
 import { useDispatch, useSelector } from "react-redux";
 import Link from "next/link";
@@ -9,31 +10,39 @@ import {
   Typography,
   Divider,
   Grid,
+  Snackbar,
+  IconButton,
+  Icon,
 } from "@material-ui/core";
+import MuiAlert from "@material-ui/lab/Alert";
 
 import { task } from "../../redux";
 import style from "../../styles/formTasks.module.scss";
 
 import Layout from "../../components/Layout";
-import { useEffect } from "react";
-import { IconButton } from "@material-ui/core";
-import { Icon } from "@material-ui/core";
+
+const Alert = (props) => {
+  return <MuiAlert elevation={6} variant="filled" {...props} />;
+};
 
 const FormTasks = () => {
   const router = useRouter();
   const dispatch = useDispatch();
   const tasks = useSelector((state) => state.task.tasks);
   const { id } = router.query;
+  const [open, setOpen] = useState(false);
 
   const onSubmit = (values) => {
     if (values.id) {
       dispatch(task.actions.update(values));
+      handleClick();
       return;
     }
     const uuid = () => Math.random().toString(36).substr(2, 9);
     values.id = uuid();
     dispatch(task.actions.create(values));
     formik.setFieldValue("id", values.id);
+    handleClick();
   };
 
   const formik = useFormik({
@@ -56,10 +65,31 @@ const FormTasks = () => {
     }
   }, [id]);
 
+  const handleClick = () => {
+    setOpen(true);
+  };
+  const handleClose = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+
+    setOpen(false);
+  };
+
   return (
     <Layout>
+      <Snackbar
+        anchorOrigin={{ vertical: "top", horizontal: "right" }}
+        open={open}
+        autoHideDuration={3000}
+        onClose={handleClose}
+      >
+        <Alert onClose={handleClose} severity="success">
+          Sua tarefa foi salva com sucesso!
+        </Alert>
+      </Snackbar>
       <Grid className={style.gridHeader}>
-        <Link href='/tasks'>
+        <Link href="/tasks">
           <IconButton>
             <Icon>chevron_left</Icon>
           </IconButton>

@@ -32,6 +32,13 @@
     align-items: center;
     p {
       font-size: 0.9rem;
+      color: #333333;
+    }
+
+    .titleTask:hover {
+      cursor: pointer;
+      text-decoration: underline;
+      color: #fca29d;
     }
   }
   .iconButton {
@@ -44,6 +51,15 @@
     background-color: #204363;
     border-radius: 100%;
     color: #fff;
+  }
+}
+
+.dialogTitle {
+  color: #204363;
+
+  .iconDialog {
+    margin-right: 10px;
+    color: #204363;
   }
 }
 

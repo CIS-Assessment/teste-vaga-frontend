@@ -1,6 +1,5 @@
 # LEMBRAR:
-- colocar modal pra ver descrição.
-- Colocar mensagens de alerta.
+- mensagem de confirmação de exclusão.
 - ajustar o filtro.
 - Fazer um dashboard legal.
 
