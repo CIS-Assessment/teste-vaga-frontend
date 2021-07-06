@@ -12,6 +12,7 @@ import {
   DialogContent,
   DialogTitle,
   DialogContentText,
+  TextField,
 } from "@material-ui/core";
 
 import { toBr } from "../../utils/formatDate";
@@ -21,6 +22,7 @@ import Layout from "../../components/Layout";
 
 const ListView = ({
   tasks,
+  openFilter,
   currTask,
   openDetail,
   openDelete,
@@ -30,6 +32,8 @@ const ListView = ({
   handleCloseDetail,
   handleClickOpenDelete,
   handleCloseDelete,
+  setOpenFilter,
+  handleChangeFilter,
 }) => {
   return (
     <Layout>
@@ -85,13 +89,42 @@ const ListView = ({
       <Divider />
 
       <Grid className={style.gridBtnTable}>
-        {/* <Button className={style.btn} startIcon={<Icon>filter_list</Icon>}>
-      FILTRAR
-    </Button> */}
+        <Button
+          onClick={() => setOpenFilter(true)}
+          className={style.btn}
+          startIcon={<Icon>filter_list</Icon>}
+        >
+          FILTRAR
+        </Button>
         <Link href="/tasks/new">
           <Button startIcon={<Icon color="action">add_circle</Icon>}>ADICIONAR</Button>
         </Link>
       </Grid>
+      {openFilter && (
+        <Grid>
+          <TextField
+            required
+            autoComplete="off"
+            name="title"
+            onChange={handleChangeFilter}
+            label="Título"
+            variant="outlined"
+            style={{ marginRight: 10 }}
+          />
+          <TextField
+            required
+            className={style.field}
+            name="deadline"
+            onChange={handleChangeFilter}
+            label="Prazo"
+            type="date"
+            variant="outlined"
+            InputLabelProps={{
+              shrink: true,
+            }}
+          />
+        </Grid>
+      )}
       <Container maxWidth="md" className={style.containerTasks}>
         <Grid className={style.titleHeader}>Título</Grid>
         <Grid className={`${style.titleHeader} ${style.titleHeaderRight}`}>Prazo</Grid>

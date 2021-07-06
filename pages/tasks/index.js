@@ -7,6 +7,7 @@ import ListView from "../../views/tasks/ListView";
 const Tasks = () => {
   const dispatch = useDispatch();
   const [tasks, setTasks] = useState([]);
+  const [openFilter, setOpenFilter] = useState(false);
   const [openDetail, setOpenDetail] = useState(false);
   const [openDelete, setOpenDelete] = useState(false);
   const [currTask, setCurrTask] = useState();
@@ -46,12 +47,23 @@ const Tasks = () => {
     setCurrTask();
   };
 
+  const handleChangeFilter = (e) => {
+    setTasks(
+      tasksReducer.filter(
+        (r) => r.title.includes(e.target.value) || r.deadline.includes(e.target.value)
+      )
+    );
+  };
+
   return (
     <ListView
       tasks={tasks}
       currTask={currTask}
       openDetail={openDetail}
       openDelete={openDelete}
+      openFilter={openFilter}
+      handleChangeFilter={handleChangeFilter}
+      setOpenFilter={setOpenFilter}
       onDelete={onDelete}
       handleChange={handleChange}
       handleModalDetail={handleModalDetail}
