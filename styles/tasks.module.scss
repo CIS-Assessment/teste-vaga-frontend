@@ -1,0 +1,70 @@
+.headerTitle {
+  font-weight: 900;
+  color: #204363;
+}
+
+.gridBtnTable {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.gridTasks {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.titleHeader {
+  font-size: 24px;
+}
+.titleHeaderRight {
+  margin-right: 92px;
+}
+
+.containerTasks {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+
+  .gridRowTask {
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    p {
+      font-size: 0.9rem;
+      color: #333333;
+    }
+
+    .titleTask:hover {
+      cursor: pointer;
+      text-decoration: underline;
+      color: #fca29d;
+    }
+  }
+  .iconButton {
+    margin: 5px;
+    color: #676767;
+    cursor: pointer;
+    font-size: 20px;
+  }
+  .iconButton:hover {
+    background-color: #204363;
+    border-radius: 100%;
+    color: #fff;
+  }
+}
+
+.dialogTitle {
+  color: #204363;
+
+  .iconDialog {
+    margin-right: 10px;
+    color: #204363;
+  }
+}
+
+@media only screen and (max-width: 448px) {
+  .containerTasks {
+    padding: 0;
+  }
+}
