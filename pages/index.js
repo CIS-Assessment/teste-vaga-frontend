@@ -20,7 +20,7 @@ const Home = () => {
     }
   }, [tasks]);
 
-  return <DashboardView chartData={chartData} />;
+  return <DashboardView chartData={chartData} tasks={tasks} />;
 };
 
 export default Home;

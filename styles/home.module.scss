@@ -14,6 +14,25 @@
   align-items: center;
 }
 
+.gridNoTasks {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .btnNewTask {
+    background: #fca29d;
+    color: #fff;
+    padding: 10px 30px;
+  }
+
+  .textNoTasks {
+    color: #204363;
+    text-align: center;
+    padding: 10px;
+  }
+}
+
 .titleHeader {
   font-size: 24px;
 }
