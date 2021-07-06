@@ -1,9 +1,4 @@
 # LEMBRAR:
-- mensagem de confirmação de exclusão.
-- ajustar o filtro.
-- Fazer um dashboard legal.
-
-
 # bug detectado
 
 # Passo a passo:
@@ -24,7 +19,7 @@
 
 [ x ] Ajustar a lógica de telas (pra pegar o id)
 
-[ ] Colocar mensagens de alerta.
+[ x ] Colocar mensagens de alerta.
 
 [ ] Deploy no vercel
 
